@@ -1,0 +1,15 @@
+<div class="pokemon-img"><img src="/assets/image/pokemon_list_bg.png" class="pokemon-img__back">
+    <div>
+        <div class="pokemon-img__center visible">
+            <div><img src="/assets/image/pm/2ed3fc7439681c14e9679c5e03f808522aedebcb.png"></div>
+        </div>
+        <!---->
+    </div>
+    <div *ngFor="let item of pokemons; let i = index">
+        <!---->
+        <div class="pokemon-img__random  pokemon-img__random--{{i+1 | zeroPad:2}} visible"><img
+                src="/assets/image/pm/{{item}}">
+        </div>
+    </div>
+
+</div>

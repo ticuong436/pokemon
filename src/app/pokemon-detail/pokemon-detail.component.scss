@@ -1,0 +1,72 @@
+.contents-detail {
+  height: 100%;
+  overflow: scroll;
+  position: relative;
+  .close-dialog{
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    color: white;
+    z-index: 10000;
+    cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 1401px) {
+  .contents {
+    min-width: 950px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 767px) {
+  .pokemon-detail-overlay {
+    
+    width: 100vw;
+    height: 100vh;
+  }
+  .pokemon-detail {
+    background-image: url(/assets/image/main_sp_top_bg.jpg),
+      url(/assets/image/main_sp_bg.jpg);
+  }
+}
+@media screen and (min-width: 768px) {
+  .pokemon-detail {
+    background-image: url("/assets/image/list_bg.jpg");
+  }
+  .pokemon-detail-overlay {
+    width: 90vw;
+    height: 95vh;
+  }
+}
+
+.pokemon-detail {
+  background-size: 100% auto !important;
+  position: relative;
+  z-index: 10000;
+}
+
+.pokemon-detail-overlay {
+  position: fixed;
+  overflow: hidden;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+.hidden{
+    visibility: hidden;
+    opacity: 0;
+}
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  background: black;
+  opacity: 0.4;
+}

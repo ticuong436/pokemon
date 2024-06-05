@@ -1,0 +1,26 @@
+<div class="pokemon-advance-search">
+    <form>
+        <div id="advance_search_close" class="pokemon-advance-search__close" style="display: none;">
+            <span id="advance_search_show" class="pokemon-advance-search__close--toggle size-16">Open advanced
+                search</span>
+        </div>
+        <div id="advance_search_open" class="pokemon-advance-search__open" style="display: block;">
+            <div id="advance_search_header" class="pokemon-advance-search__open--header"></div>
+            <div id="advance_search_body" class="pokemon-advance-search__open--body">
+                <div class="pokemon-advance-search__open--body--inner">
+                    <div class="pokemon-advance-search__title size-20">Types</div>
+                    <div class="pokemon-advance-search__types">
+                        <div *ngFor="let item of types" (click)="selectType(item.id) "><input type="checkbox"
+                                id="pokemon_type_{{item.name.toLowerCase}}" :checked="" value="normal"
+                                style="display: none;"> <label for="pokemon_type_{{item.name.toLowerCase()}}"
+                                id="pokemon_type_label_normal" data-search-type="normal"
+                                class="pokemon-advance-search__type size-14 pokemon-advance-search__type--{{item.name.toLowerCase()}} {{indexType === item.id ? 'on' : ''}}"><span
+                                    style="font-size: 100%;">{{item.name}}</span></label></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+  
+</div>

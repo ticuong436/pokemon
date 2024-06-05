@@ -1,0 +1,200 @@
+<div class="pokemon-detail-overlay" *ngIf="pokemon && pokemons">
+    <div class="contents-detail">
+        <div class="pokemon-detail">
+            <div class="pokemon-detail__slider">
+                <div class="pokemon-slider">
+                    <div class="pokemon-slider__wrapper pokemon-slider__wrapper--left {{indexPokemon > 0 ? '' : 'hidden'}}"
+                        (click)="hanldePrevSlider()">
+                        <div>
+                            <img class="pokemon-slider__arrow pokemon-slider__arrow--left hover_image"
+                                src="/assets/image/arrow_left_btn.png">
+                        </div>
+                        <span class="pokemon-slider__sub-no pokemon-slider__sub-no--left size-14">{{indexPokemon |
+                            zeroPad:4}}</span>
+                        <span
+                            class="pokemon-slider__sub-name pokemon-slider__sub-name--left size-15">{{pokemons[indexPokemon
+                            > 0 ? indexPokemon - 1 : 0].name}}</span>
+                    </div>
+                    <div class="pokemon-slider__main">
+                        <p class="pokemon-slider__main-no size-28">{{pokemon.number | zeroPad:4}}</p>
+                        <p class="pokemon-slider__main-name size-35">{{pokemon.name}}</p>
+                        <p class="pokemon-slider__main-subname size-20"></p>
+                    </div>
+                    <div class="pokemon-slider__wrapper pokemon-slider__wrapper--right {{indexPokemon+1 === pokemons.length ? 'hidden' : ''}}"
+                        (click)="handleNextSlider()">
+                        <div>
+                            <img class="pokemon-slider__arrow pokemon-slider__arrow--right hover_image"
+                                src="/assets/image/arrow_right_btn.png">
+                        </div>
+                        <span *ngIf="indexPokemon+1 != pokemons.length"
+                            class="pokemon-slider__sub-name pokemon-slider__sub-name--right size-15">{{pokemons[indexPokemon+1].name}}</span>
+                        <span class="pokemon-slider__sub-no pokemon-slider__sub-no--right size-14">{{indexPokemon+2 |
+                            zeroPad:4}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pokemon-detail__profile">
+                <div class="pokemon-main">
+                    <div class="pokemon-main__center">
+                        <div class="pokemon-img">
+                            <img class="pokemon-img__back" src="/assets/image/pokemon_bg.png">
+                            <img class="pokemon-img__blur" src="/assets/image/pokemon_circle_bg.png">
+                            <img class="pokemon-img__front"
+                                src="https://api.vandvietnam.com/api/pokemon-api/pokemons/{{pokemon.id}}/sprite">
+                        </div>
+                    </div>
+                    <div class="pokemon-main__upper-left">
+                        <div class="pokemon-type__title size-20">Types</div>
+                        <div class="pokemon-type">
+                            <div class="pokemon-type">
+
+                                <div
+                                    class="pokemon-type__type pokemon-type__type--{{pokemon.type_1.name.toLowerCase()}} pokemon-type__type--has_second size-14">
+                                    <div>
+                                        <span
+                                            style="font-size: 100%; visibility: visible;">{{pokemon.type_1.name}}</span>
+                                    </div>
+                                </div>
+                                <div *ngIf="pokemon.type_2?.id"
+                                    class="pokemon-type__type pokemon-type__type--{{pokemon.type_2.name.toLowerCase()}} pokemon-type__type--second size-14">
+                                    <div >
+                                        <span
+                                            style="font-size: 100%; visibility: visible;">{{pokemon.type_2.name}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pokemon-main__right">
+                        <div class="pokemon-info">
+                            <div class="pokemon-info--inner">
+                                <div class="pokemon-info__height"><span
+                                        class="pokemon-info__title size-14">Height</span>
+                                    <span class="pokemon-info__value size-14">??? m</span>
+                                </div>
+                                <div class="pokemon-info__category"><span
+                                        class="pokemon-info__title size-14">Species</span> <span
+                                        class="pokemon-info__value size-14"><span>???</span></span></div>
+                                <div class="pokemon-info__weight"><span
+                                        class="pokemon-info__title size-14">Weight</span>
+                                    <span class="pokemon-info__value size-14">??? kg</span>
+                                </div>
+                                <div class="pokemon-info__gender"><span
+                                        class="pokemon-info__title size-14">Gender</span>
+                                    <span class="pokemon-info__value size-14"><img src="/assets/image/icon_male.png"
+                                            alt="" class="pokemon-info__gender-icon"> <span
+                                            class="pokemon-info__gender-separator">/</span> <img
+                                            src="/assets/image/icon_female.png" alt=""
+                                            class="pokemon-info__gender-icon"></span>
+                                </div>
+                                <div class="pokemon-info__abilities"><span
+                                        class="pokemon-info__title size-14">Characteristic</span>
+                                    <span class="pokemon-info__value size-14">
+                                        ???</span>
+                                </div>
+                            </div>
+                            <!---->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pokemon-detail__stats">
+                <div class="pokemon-stats">
+                    <div class="pokemon-stats__story-wrapper">
+                        <div class="pokemon-stats__story-inner">
+                            <div data-init-disp-story="1" class="pokemon-story">
+                                <div class="pokemon-story__header"><span
+                                        class="pokemon-story__title size-20">Description</span>
+                                    <div class="pokemon-story__icon-wrapper"><img src="/assets/image/icon_ball_on.png"
+                                            alt="" class="pokemon-story__icon"> <img src="/assets/image/icon_ball.png"
+                                            alt="" class="pokemon-story__icon"></div>
+                                </div>
+                                <p class="pokemon-story__body size-14"><span
+                                        style="font-size: 100%; visibility: visible;">Lorem ipsum dolor sit amet
+                                        consectetur adipisicing elit. At sit pariatur dolores aliquid consequuntur magni
+                                        veritatis dolorum eum quos tenetur repudiandae vitae optio necessitatibus
+                                        commodi beatae repellendus dolorem, animi quibusdam.</span></p>
+                                <!---->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pokemon-stats__status-wrapper">
+                        <div class="pokemon-stats__title size-20">
+                            <span>Status</span>
+                        </div>
+                        <div class="pokemon-stats__wrapper-status">
+                            <div class="pokemon-status__block">
+                                <div class="pokemon-status">
+                                    <div class="pokemon-status__scale-box"><span
+                                            class="pokemon-status__scale {{this.pokemon.hp < tb.hp*(15-(i+1)) ? '': 'appear d'+ (15-i) }}"
+                                            *ngFor="let item of 15 | range; let i = index"></span>
+
+                                    </div>
+                                    <div class="pokemon-status__title size-10"><span
+                                            style="font-size: 78.5185%; visibility: visible;">HP</span></div>
+                                </div>
+                                <div class="pokemon-status">
+                                    <div class="pokemon-status__scale-box">
+                                        <span
+                                            class="pokemon-status__scale {{this.pokemon.attack < tb.attack*(15-(i+1)) ? '': 'appear d'+ (15-i) }}"
+                                            *ngFor="let item of 15 | range; let i = index"></span>
+                                    </div>
+                                    <div class="pokemon-status__title size-10"><span
+                                            style="font-size: 78.5185%; visibility: visible;">Attack</span></div>
+                                </div>
+                                <div class="pokemon-status">
+                                    <div class="pokemon-status__scale-box"><span
+                                            class="pokemon-status__scale {{this.pokemon.defense < tb.defense*(15-(i+1)) ? '': 'appear d'+ (15-i) }}"
+                                            *ngFor="let item of 15 | range; let i = index"></span>
+
+                                    </div>
+                                    <div class="pokemon-status__title size-10"><span
+                                            style="font-size: 78.5185%; visibility: visible;">Defense</span></div>
+                                </div>
+                            </div>
+                            <div class="pokemon-status__block">
+                                <div class="pokemon-status">
+                                    <div class="pokemon-status__scale-box"><span
+                                            class="pokemon-status__scale {{this.pokemon.sp_atk < tb.sp_attack*(15-(i+1)) ? '': 'appear d'+ (15-i) }}"
+                                            *ngFor="let item of 15 | range; let i = index"></span>
+
+                                    </div>
+                                    <div class="pokemon-status__title size-10"><span
+                                            style="font-size: 78.5185%; visibility: visible;">Special attack</span>
+                                    </div>
+                                </div>
+                                <div class="pokemon-status">
+                                    <div class="pokemon-status__scale-box"><span
+                                            class="pokemon-status__scale {{this.pokemon.sp_def < tb.sp_defense*(15-(i+1)) ? '': 'appear d'+ (15-i) }}"
+                                            *ngFor="let item of 15 | range; let i = index"></span>
+
+                                    </div>
+                                    <div class="pokemon-status__title size-10"><span
+                                            style="font-size: 78.5185%; visibility: visible;">Special defense</span>
+                                    </div>
+                                </div>
+                                <div class="pokemon-status">
+                                    <div class="pokemon-status__scale-box"><span
+                                            class="pokemon-status__scale {{this.pokemon.speed < tb.speed*(15-(i+1)) ? '': 'appear d'+ (15-i) }}"
+                                            *ngFor="let item of 15 | range; let i = index"></span>
+
+                                    </div>
+                                    <div class="pokemon-status__title size-10"><span
+                                            style="font-size: 78.5185%; visibility: visible;">Speed</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="close-dialog" (click)="closeDialog()">
+            X
+        </div>
+    </div>
+
+</div>
+
+<div class="overlay" (click)="closeDialog()"></div>

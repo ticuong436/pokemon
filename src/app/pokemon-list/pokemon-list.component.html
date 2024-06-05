@@ -1,0 +1,28 @@
+<div>
+    <div class="pokemon-list--box--wrapper" *ngFor="let item of pokemons; let i = index"
+        (click)="handleSelectPokemonDetail(item, i)">
+        <div data-height="0.7" data-weight="6.9" class="pokemon-list--box visible loaded"><img src='https://api.vandvietnam.com/api/pokemon-api/pokemons/{{item.id}}/sprite
+            ' class="pokemon-list--box__img">
+            <span class="pokemon-list--box__no size-16">{{item.number | zeroPad:4}}</span> <span
+                class="pokemon-list--box__name size-22">{{item.name}}</span> <span
+                class="pokemon-list--box__subname size-20"></span>
+            <div class="pokemon-list--box__types">
+                <div
+                    class="pokemon-list--box__type size-12 pokemon-list--box__type--{{item.type_1.name.toLowerCase()}}">
+                    <span>{{item.type_1.name}}</span>
+                </div>
+                <div class="pokemon-list--box__type size-12 pokemon-list--box__type--{{item.type_2.name.toLowerCase()}}"
+                    *ngIf="item.type_2?.id">
+                    <span>{{item.type_2.name}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="slectPokemon">
+    <app-pokemon-detail [pokemon]="slectPokemon" [pokemons]="pokemons" (prevSlider)="prevSlider()"
+        (nextSlider)="nextSlider()" [indexPokemon]="
+        indexPokemon" (removePokemonDetail)="removePokemonDetail($event)">
+    </app-pokemon-detail>
+
+</div>
